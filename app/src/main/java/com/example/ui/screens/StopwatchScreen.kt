@@ -427,7 +427,7 @@ fun exportLapsCsv(context: Context, laps: List<StopwatchLap>) {
         }
         val shareIntent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
-            putExtra(Intent.EXTRA_TEXT, "Salim Clock Laps:\n$plainText")
+            putExtra(Intent.EXTRA_TEXT, "Salim Laps:\n$plainText")
         }
         context.startActivity(Intent.createChooser(shareIntent, "Share Lap Times"))
     }

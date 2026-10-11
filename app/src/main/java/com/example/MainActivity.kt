@@ -1,10 +1,13 @@
 package com.example
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
@@ -34,6 +37,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -106,6 +110,16 @@ fun SalimClockApp(
     val savedCities by viewModel.savedCities.collectAsStateWithLifecycle()
     val bedtimeSchedule by viewModel.bedtimeSchedule.collectAsStateWithLifecycle()
 
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        val permissionLauncher = rememberLauncherForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { /* permission callback */ }
+
+        LaunchedEffect(Unit) {
+            permissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
+
     var selectedTab by remember { mutableIntStateOf(0) }
     var showFaceStudio by remember { mutableStateOf(false) }
 
@@ -128,7 +142,7 @@ fun SalimClockApp(
             TopAppBar(
                 title = {
                     Text(
-                        text = "Salim Clock",
+                        text = "Salim",
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp,
                         color = Color.White

@@ -511,7 +511,7 @@ fun BedtimeScreen(
 
                         Spacer(modifier = Modifier.height(6.dp))
                         Text(
-                            "*Note: Heuristic based on device motion and light sensors. Salim Clock does not represent clinical or medical sleep diagnosis.",
+                            "*Note: Heuristic based on device motion and light sensors. Salim does not represent clinical or medical sleep diagnosis.",
                             color = Color.DarkGray,
                             fontSize = 10.sp
                         )

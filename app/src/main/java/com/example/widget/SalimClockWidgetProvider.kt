@@ -40,7 +40,7 @@ class SalimClockWidgetProvider : AppWidgetProvider() {
 
             views.setTextViewText(R.id.widget_clock_time, timeFormat.format(now))
             views.setTextViewText(R.id.widget_clock_date, dateFormat.format(now))
-            views.setTextViewText(R.id.widget_alarm_label, "Salim Clock • Next: 06:45 AM")
+            views.setTextViewText(R.id.widget_alarm_label, "Salim • Next: 06:45 AM")
 
             // Tap widget to open main activity
             val intent = Intent(context, MainActivity::class.java)

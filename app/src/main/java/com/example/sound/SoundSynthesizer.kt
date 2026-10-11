@@ -73,7 +73,12 @@ object SoundSynthesizer {
 
             while (isActive) {
                 fillBufferForSound(name, buffer, sampleIndex, sampleRate)
-                track.write(buffer, 0, buffer.size)
+                try {
+                    val written = track.write(buffer, 0, buffer.size)
+                    if (written < 0) break
+                } catch (_: Exception) {
+                    break
+                }
                 sampleIndex += buffer.size
                 if (!isLooping && sampleIndex > sampleRate * 3) {
                     break

@@ -1,5 +1,5 @@
 {
-  "name": "Salim Clock",
+  "name": "Salim",
   "description": "Next-generation clock and alarm with fluid ring faces, multi-stage dismissal challenges, smart wake window, Pomodoro and interval timers, and world clock planner.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
